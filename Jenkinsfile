@@ -10,8 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/pritiranga/dvja.git']]])
-
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/pritiranga/dvja.git']]])
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
