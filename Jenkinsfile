@@ -24,7 +24,7 @@ pipeline {
                 success {
                     junit(testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)
             
-                    archiveArtifacts 'target/*.jar'
+                    archiveArtifacts 'target/*.war'
                 }
             }
         }
