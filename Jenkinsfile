@@ -15,7 +15,7 @@ pipeline {
   }
   post {
     always {
-      junit '**/target/*.xml'
+      junit testDataPublishers: [attachments()], testResults: 'poc-dvja-script/target/test-reports/*.xml'
     }
   }
 }
