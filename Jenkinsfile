@@ -6,7 +6,7 @@
 
         stages {
             stage('Build and Unit test') {
-                agent { label 'maven' }
+        
                 steps {
                     script {
                         module_Maven('clean verify')
