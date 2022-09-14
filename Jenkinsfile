@@ -21,12 +21,11 @@ pipeline {
         sh(script: './mvnw --batch-mode package -DskipTests')
       }
     }
-  }
   post {
     always {
       junit(testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)
     }
   }
 }
+
  
-}
