@@ -10,12 +10,7 @@ pipeline {
                 sh 'mvn clean install test -f pom.xml'
             }
         }
-    stage('Test') {
-      steps {
-        sh(script: './mvnw --batch-mode -Dmaven.test.failure.ignore=true test')
 
-      }
-    }
 
   }
   post {
