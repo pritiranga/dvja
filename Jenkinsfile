@@ -14,7 +14,7 @@
                  // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
                 success {
-                    junit(skipPublishingChecks: true, allowEmptyResults : true, testResults: 'poc/target/test-reports/*.xml')
+                    junit skipPublishingChecks: true, testResults: 'test-results.xml'
             
                     archiveArtifacts 'target/*.war'
                 }
