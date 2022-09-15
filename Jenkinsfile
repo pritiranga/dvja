@@ -20,7 +20,7 @@
                  // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
                 success {
-                    junit(testResults: 'target/surefire-reports/*.xml', skipPublishingChecks: true, allowEmptyResults : true, testResults: 'poc/target/test-reports/*.xml)
+                    junit(testResults: 'target/surefire-reports/*.xml', skipPublishingChecks: true, allowEmptyResults : true, testResults: 'poc/target/test-reports/*.xml')
             
                     archiveArtifacts 'target/*.war'
                 }
