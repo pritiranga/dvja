@@ -5,14 +5,13 @@
         }
 
         stages {
-            stage('Build and test') {
+            stage('Build') {
                 steps {
                     sh "mvn -Dmaven.test.failure.ignore=true clean install test"
                 }
             }
             stage('Test') {
                 steps {
-                    sh 'make test'
 
                     script {
                         def testResults = findFiles(glob: 'build/reports/**/*.xml')
@@ -26,7 +25,7 @@
 
         post {
               always {
-                  archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+                  archiveArtifacts artifacts: 'build/libs/**/*.jar'
                   junit 'build/reports/**/*.xml'
                 }
             }
