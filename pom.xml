@@ -22,7 +22,14 @@
             <artifactId>struts2-core</artifactId>
             <version>${struts2.version}</version>
         </dependency>
-
+         
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.2</version>
+            <scope>test</scope>
+        </dependency>
+             
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-config-browser-plugin</artifactId>
