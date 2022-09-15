@@ -7,29 +7,21 @@
         stages {
             stage('Build') {
                 steps {
-                    sh "mvn -Dmaven.test.failure.ignore=true clean install test"
+                    sh "mvn -Dmaven.test.failure.ignore=true clean compile test"
                 }
             }
-            stage('Test') {
+            stage('Package') {
                 steps {
-
-                    script {
-                        def testResults = findFiles(glob: 'build/reports/**/*.xml')
-                        for(xml in testResults) {
-                            touch xml.getPath()
-                        }
-                    }
-                }
+                sh(script: './mvnw --batch-mode package -DskipTests')
             }
         }
-
+    }
         post {
-              always {
-                  archiveArtifacts artifacts: 'build/libs/**/*.jar'
-                  junit 'build/reports/**/*.xml'
-                }
+            always {
+                junit(testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)
             }
-            
+        }
+    }
         }
    
    
