@@ -9,7 +9,7 @@
                 steps {
                     sh "mvn -Dmaven.test.failure.ignore=true clean install test"
                 }
-
+            }
             stage('Test') {
                 steps {
                     sh 'make test'
