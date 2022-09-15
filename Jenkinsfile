@@ -10,13 +10,24 @@
                     sh "mvn -Dmaven.test.failure.ignore=true clean install test"
                 }
 
+            stage('Test') {
+                steps {
+                    sh 'make test'
+
+                    script {
+                        def testResults = findFiles(glob: 'build/reports/**/*.xml')
+                        for(xml in testResults) {
+                            touch xml.getPath()
+                        }
+                    }
+                }
+        }
+ 
+
             post {
-                 // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
-                success {
-                    junit skipPublishingChecks: true, testResults: 'test-results.xml'
-            
-                    archiveArtifacts 'target/*.war'
+                always {
+                    archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+                    junit 'build/reports/**/*.xml'
                 }
             }
             
