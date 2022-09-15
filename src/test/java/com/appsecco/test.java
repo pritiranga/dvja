@@ -1,4 +1,4 @@
-package com.appsecco;
+package com.appsecco.example;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
